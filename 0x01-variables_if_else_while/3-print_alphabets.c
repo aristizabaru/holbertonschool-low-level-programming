@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * main - main block
- * Description: Prints a..z
+ * Description: Prints a..zA..Z
  * Return: 0
  */
 int main(void)
@@ -13,7 +13,7 @@ int main(void)
 		putchar(abc);
 		abc++;
 	}
-	abc = A;
+	abc = 'A';
 	while (abc <= 'Z')
 	{
 		putchar(abc);
