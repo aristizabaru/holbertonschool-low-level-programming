@@ -24,7 +24,7 @@ int main(void)
 			putchar(d + '0');
 			putchar(m + '0');
 
-			if (i < 99)
+			if (i < 80)
 			{
 				putchar(44);
 				putchar(32);
