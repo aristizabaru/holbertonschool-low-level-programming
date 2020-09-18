@@ -8,9 +8,9 @@ int main(void)
 {
 	int n = 0;
 
-	while (n < 9)
+	while (n < 10)
 	{
-		putchar(n);
+		printf("%d",n);
 		n++;
 	}
 	putchar('\n');
