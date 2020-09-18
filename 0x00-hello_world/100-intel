@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc .intel_syntax noprefix $CFILE
+gcc gcc $CFILE -o asm2 -masm=intel
