@@ -19,8 +19,11 @@ int main(void)
 				putchar(n1 + '0');
 				putchar(n2 + '0');
 				putchar(n3 + '0');
-				putchar(44);
-				putchar(32);
+				if (n1 != 7)
+				{
+					putchar(44);
+					putchar(32);
+				}
 			}
 			b3++;
 		}
