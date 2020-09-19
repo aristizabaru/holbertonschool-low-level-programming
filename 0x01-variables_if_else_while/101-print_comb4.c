@@ -30,5 +30,6 @@ int main(void)
 		b2++;
 		b3 = b2 + 1;
 	}
+	putchar('\n');
 	return (0);
 }
