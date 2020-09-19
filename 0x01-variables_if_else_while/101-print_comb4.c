@@ -27,4 +27,5 @@ int main(void)
 		b2++;
 		b3 = b2 + 1;
 	}
+	return (0);
 }
