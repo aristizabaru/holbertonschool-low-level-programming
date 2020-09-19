@@ -2,7 +2,7 @@
 /**
  * main - entry point
  * Description: write text
- * return 1
+ * Return: 0
  */
 int main(void)
 {
