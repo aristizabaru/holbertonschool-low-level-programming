@@ -16,7 +16,7 @@ int main(void)
 			{
 				for (B2 = 0; B2 <= 9; B2++)
 				{
-					if (A + B < A2 + B2)
+					if (A <= A2 && (A + B < A2 + B2))
 					{
 						putchar(A + '0');
 						putchar(B + '0');
