@@ -16,23 +16,27 @@ int main(void)
 			{
 				for (B2 = 0; B2 <= 9; B2++)
 				{
-					if (A <= A2 && (A + B < A2 + B2))
+					if (A <= A2 && (A + B <= A2 + B2))
 					{
-						putchar(A + '0');
-						putchar(B + '0');
-						putchar(32);
-						putchar(A2 + '0');
-						putchar(B2 + '0');
-						if (!((A == 9 && B == 8) && (A2 == 9 && B2 == 9)))
+						if (!(A == A2 && B == B2))
 						{
-							putchar(44);
+							putchar(A + '0');
+							putchar(B + '0');
 							putchar(32);
+							putchar(A2 + '0');
+							putchar(B2 + '0');
+							if (!((A == 9 && B == 8) && (A2 == 9 && B2 == 9)))
+							{
+								putchar(44);
+								putchar(32);
+							}
 						}
 					}
 				}
 			}
 		}
 	}
+
 	putchar('\n');
 	return (0);
 }
