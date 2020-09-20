@@ -17,7 +17,7 @@ int print(int *Ap, int *Bp, int *A2p, int *B2p)
 	int A2 = *A2p;
 	int B2 = *B2p;
 
-	if (A < A2 || (A == B2 && A2 < B2))
+	if (A < A2 || (A == A2 && B < B2))
 	{
 		putchar(A + '0');
 		putchar(B + '0');
