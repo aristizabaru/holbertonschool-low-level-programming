@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 /**
- * print_to_98 -  prints all natural numbers from n to 98
- * @n1: number to print from
+ * print_to_98 -  prints numbers from n to 98
+ * @n: number to print from
  *
  * Return: suma de los números
  */
