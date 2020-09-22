@@ -15,10 +15,15 @@ void times_table(void)
 		for (b = 0; b < 10; b++)
 		{
 			r = b * e;
-			_putchar(' ');
-			if (r < 10)
+			if (r != 0 && b == 0)
+				_putchar(' ');
+			if (r < 10 && b != 0)
 			{
 				_putchar(' ');
+				_putchar(r + '0');
+			}
+			else if (r == 0 && b == 0)
+			{
 				_putchar(r + '0');
 			}
 			else
@@ -35,7 +40,6 @@ void times_table(void)
 		e++;
 	}
 }
-
 /**
  * firstDigit - returns first digit of number
  * @n: number to get first digit
@@ -48,7 +52,6 @@ int firstDigit(int n)
 		n /= 10;
 	return (n);
 }
-
 /**
  * lastDigit - returns last digit of number
  * @n: number to get last digit
