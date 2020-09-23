@@ -6,26 +6,18 @@
  */
 int main(void)
 {
-	int i = 0;
-	int r3 = 0;
-	int r5 = 0;
-	int m3, m5, r;
+	int i = 1;
+	int r = 0;
 
 	while (i < 1024)
 	{
-		/* Multiplos 3 */
-		m3 = 3 * i;
-		/* Multiplos 5 */
-		m5 = 5 * i;
-
-		if (m3 < 1024)
-			r3 += m3;
-
-		if (m5 < 1024)
-			r5 += m5;
+		if (i % 3 == 0)
+			r += i;
+		else if (i % 5 == 0)
+			r += i;
 		i++;
 	}
-	r = r3 + r5;
 	printf("%d\n", r);
+
 	return (0);
 }
