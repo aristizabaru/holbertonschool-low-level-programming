@@ -10,6 +10,7 @@ int main(void)
 	long int ant2 = 1;
 	long int ant1 = 2;
 	long int act;
+
 	printf("1, ");
 	while (i < 50)
 	{
