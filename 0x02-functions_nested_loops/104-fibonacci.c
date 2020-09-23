@@ -7,9 +7,9 @@
 int main(void)
 {
 	int i = 1;
-	long double ant2 = 1;
-	long double ant1 = 2;
-	long double act;
+	unsigned int ant2 = 1;
+	unsigned int ant1 = 2;
+	unsigned int act;
 
 	printf("1, ");
 	while (i < 99)
@@ -18,9 +18,9 @@ int main(void)
 		ant1 = ant2;
 		ant2 = act;
 		if (i != 98)
-			printf("%.0Lf, ", act);
+			printf("%u, ", act);
 		else
-			printf("%.0Lf", act);
+			printf("%u", act);
 		i++;
 	}
 	printf("\n");
