@@ -25,4 +25,5 @@ int main(void)
 	}
 	r = r3 + r5;
 	printf("%d\n", r);
+	return (0);
 }
