@@ -12,12 +12,12 @@ int main(void)
 	long double act;
 
 	printf("1, ");
-	while (i < 98)
+	while (i < 99)
 	{
 		act = ant1 + act;
 		ant1 = ant2;
 		ant2 = act;
-		if (i != 97)
+		if (i != 98)
 			printf("%.0Lf, ", act);
 		else
 			printf("%.0Lf", act);
