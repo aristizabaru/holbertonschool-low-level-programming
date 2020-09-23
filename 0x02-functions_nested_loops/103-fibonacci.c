@@ -6,20 +6,18 @@
  */
 int main(void)
 {
-	int i = 1;
-	long int ant2 = 1;
-	long int ant1 = 2;
-	long int act = 1;
-	long int res = 0;
+	int i = 1, j = 2, total = 0;
+	int k;
 
-	while (act < 4000000)
+	while (j < 4000000)
 	{
-		act = ant1 + act;
-		ant1 = ant2;
-		ant2 = act;
-		if (act % 2 == 0)
-			res += act;
+		if (j % 2 == 0)
+			total += j;
+
+		k = j;
+		j += i;
+		i = k;
 	}
-	printf("%ld\n", res);
+	printf("%d\n", total);
 	return (0);
 }
