@@ -12,12 +12,12 @@ int main(void)
 	long int act;
 	long int res = 0;
 
-	while (i < 35)
+	while (i < 4000000)
 	{
 		act = ant1 + act;
 		ant1 = ant2;
 		ant2 = act;
-		if (act % 2 == 0 && act < 4000000)
+		if (act % 2 == 0)
 			res += act;
 		i++;
 	}
