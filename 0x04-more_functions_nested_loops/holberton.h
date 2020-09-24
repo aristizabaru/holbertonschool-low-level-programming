@@ -9,3 +9,4 @@ void print_diagonal(int n);
 void print_square(int size);
 int es_multiplo(int n1, int n2);
 void print_fizz(int n);
+void print_triangle(int size);
