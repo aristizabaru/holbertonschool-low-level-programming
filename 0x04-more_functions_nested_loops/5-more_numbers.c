@@ -18,13 +18,13 @@ void more_numbers(void)
 			int n1;
 			int n2;
 
-			if (j < 10)
-				_putchar(j + '0');
-			else
-			{
+			n1 = j % 10;
+			if (j >= 10)
 				n1 = j / 10;
+			_putchar(n1 + '0');
+			if (j >= 10)
+			{
 				n2 = j % 10;
-				_putchar(n1 + '0');
 				_putchar(n2 + '0');
 			}
 			j++;
