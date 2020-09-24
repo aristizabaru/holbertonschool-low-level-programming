@@ -19,7 +19,7 @@ int main(void)
 		else if (es_multiplo(i, 5) == 0)
 			print_fizz(5);
 		else
-			printf("%d ", i);
+			printf("%d", i);
 		if (i != 100)
 			printf(" ");
 	}
