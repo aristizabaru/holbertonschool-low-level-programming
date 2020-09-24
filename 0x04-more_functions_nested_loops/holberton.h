@@ -10,3 +10,5 @@ void print_square(int size);
 int es_multiplo(int n1, int n2);
 void print_fizz(int n);
 void print_triangle(int size);
+void print_number(int n);
+int _putchar(char c);
