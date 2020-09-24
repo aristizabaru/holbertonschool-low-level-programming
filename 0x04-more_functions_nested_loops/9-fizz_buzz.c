@@ -20,6 +20,8 @@ int main(void)
 			print_fizz(5);
 		else
 			printf("%d ", i);
+		if (i != 100)
+			printf(" ");
 	}
 	printf("\n");
 	return (0);
@@ -61,9 +63,9 @@ int es_multiplo(int n1, int n2)
 void print_fizz(int n)
 {
 	if (n == 3)
-		printf("Fizz ");
+		printf("Fizz");
 	else if (n == 5)
-		printf("Buzz ");
+		printf("Buzz");
 	else
-		printf("FizzBuzz ");
+		printf("FizzBuzz");
 }
