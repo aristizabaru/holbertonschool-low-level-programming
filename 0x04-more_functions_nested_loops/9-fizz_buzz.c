@@ -37,21 +37,12 @@ int main(void)
  */
 int es_multiplo(int n1, int n2)
 {
-	int i;
-	int esPrimo = 1;
+	int esMultiplo = 1;
+	
+	if (n1 % n2 == 0)
+		esMultiplo = 0;
 
-	for (i = 1; i <= n1; i++)
-	{
-		int res;
-
-		res = (n2 * i);
-		if (res == n1)
-		{
-			esPrimo = 0;
-			break;
-		}
-	}
-	return (esPrimo);
+	return (esMultiplo);
 }
 
 /**
