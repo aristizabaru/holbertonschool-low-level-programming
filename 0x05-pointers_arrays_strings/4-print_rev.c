@@ -8,13 +8,18 @@
  */
 void print_rev(char *s)
 {
-	int i;
+	char letra;
+	int lenght, i = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (lenght = 0; s[lenght] != '\0'; lenght++)
 		;
 
-	for (i--; i >= 0; i--)
-		_putchar(s[i]);
-
-	_putchar('\n');
+	while (i < lenght)
+	{
+		letra = *(s + i);
+		*(s + i) = *(s + lenght - 1);
+		*(s + lenght - 1) = letra;
+		i++;
+		lenght--;
+	}
 }
