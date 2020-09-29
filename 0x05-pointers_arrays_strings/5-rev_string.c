@@ -2,7 +2,7 @@
 
 /**
  * rev_string - prints a string, in reverse
- * @*s: string to print
+ * @s: string to print
  *
  * Return: void
  */
@@ -26,5 +26,6 @@ void rev_string(char *s)
 		c++;
 		c2--;
 	}
+
 }
 
