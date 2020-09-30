@@ -15,7 +15,7 @@ int _atoi(char *s)
 		/* compruebo si hay - */
 		if (*s == '-')
 			signo = -1;
-		else (*s == '+')
+		else if (*s == '+')
 			signo = 1;
 
 		/* imprime números */
