@@ -29,5 +29,7 @@ int _atoi(char *s)
 
 		s++;
 	}
-	return (res * signo);
+	if (signo < 0)
+		res *= -1;
+	return (res);
 }
