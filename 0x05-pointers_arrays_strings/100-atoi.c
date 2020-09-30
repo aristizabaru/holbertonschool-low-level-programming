@@ -8,28 +8,29 @@
  */
 int _atoi(char *s)
 {
-	int i = 0, res = 0, sign = -1;
+	int i;
+	int h, p;
 
-	while (*s)
+	h = 0;
+	p = -1;
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		/* compruebo signo */
 		if (s[i] == '-')
-			sign *= -1;
+			p *= -1;
 
 		if (s[i] > 47 && s[i] < 58)
 		{
-			/* imprime números */
-			res = res * 10 + *s - '0';
+			if (h < 0)
+				h = (h * 10) - (s[i] - '0');
+			else
+				h = (s[i] - '0') * -1;
 
-			/* salgo del loop cuando pasa número */
 			if (s[i + 1] < 48 || s[i + 1] > 57)
 				break;
 		}
-		i++;
 	}
+	if (p < 0)
+		h *= -1;
 
-	if (sign < 0)
-		res *= -1;
-
-	return (res);
+	return (h);
 }
