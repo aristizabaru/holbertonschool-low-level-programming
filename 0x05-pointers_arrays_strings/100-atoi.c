@@ -12,11 +12,9 @@ int _atoi(char *s)
 
 	while (*s)
 	{
-		/* compruebo si hay - o + y multiplica */
+		/* compruebo si hay - */
 		if (*s == '-')
 			signo *= -1;
-		else if (*s == '+')
-			signo *= 1;
 
 		/* imprime números */
 		if (*s >= '0' && *s <= '9')
