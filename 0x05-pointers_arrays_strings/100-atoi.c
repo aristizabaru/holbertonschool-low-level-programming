@@ -21,11 +21,12 @@ int _atoi(char *s)
 		{
 			/* Multiplica x 10 para agregar decena */
 			res = res * 10 + *s - '0';
+
+			/* salgo del loop cuando pasa número */
+			if (s[1] < '0' || s[1] > '9')
+				break;
 		}
 
-		/* salgo del loop cuando pasa número */
-		if (!(s[1] >= '0' && s[1] <= '9') && (s[0] >= '0' && s[0] <= '9'))
-			break;
 		s++;
 	}
 	return (res * signo);
