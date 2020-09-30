@@ -8,7 +8,9 @@
  */
 int _atoi(char *s)
 {
-	int res = 0, signo = 1;
+	unsigned int res = 0;
+	int resNeg = 0;
+	int signo = 1;
 
 	while (*s)
 	{
@@ -29,5 +31,8 @@ int _atoi(char *s)
 
 		s++;
 	}
-	return (res * signo);
+	if (signo < 0)
+		return (resNeg = res * signo);
+	else
+		return (res * signo);
 }
