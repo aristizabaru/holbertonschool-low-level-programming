@@ -8,16 +8,13 @@
  */
 int _atoi(char *s)
 {
-	int res = 0, signo = 1, i = 0;
-	while ((*(s + i) < '0' || *(s + i) > '9') && (*(s + i) != '\0'))
-	{
-		if (*(s + i) == '-')
-			signo *= -1;
-		i++;
-	}
+	int res = 0, signo = 1;
 
 	while (*s)
 	{
+		/* compruebo si hay - o + y multiplica */
+		if (*s == '-')
+			signo *= -1;
 
 		/* imprime números */
 		if (*s >= '0' && *s <= '9')
