@@ -31,6 +31,8 @@ int _atoi(char *s)
 
 		s++;
 	}
+
+/*Según el signo cambio de un unsiged a signed int*/
 	if (signo < 0)
 		return (resNeg = res * signo);
 	else
