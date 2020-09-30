@@ -12,21 +12,22 @@ int _atoi(char *s)
 
 	while (*s)
 	{
+		/* compruebo signo */
 		if (s[i] == '-')
 			sign *= -1;
 
 		if (s[i] > 47 && s[i] < 58)
 		{
-			if (res < 0)
-				res = (res * 10) - (s[i] - '0');
-			else
-				res = (s[i] - '0') * -1;
+			/* imprime números */
+			res = res * 10 + *s - '0';
 
+			/* salgo del loop cuando pasa número */
 			if (s[i + 1] < 48 || s[i + 1] > 57)
 				break;
 		}
 		i++;
 	}
+
 	if (sign < 0)
 		res *= -1;
 
