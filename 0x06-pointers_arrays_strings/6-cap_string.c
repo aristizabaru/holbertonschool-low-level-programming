@@ -16,7 +16,7 @@ char *cap_string(char *s)
 	/*comparar cada caracter con comparación y cambiar to Uppercase*/
 	while (s[i] != '\0')
 	{
-		for (j = 0; j < 14; j++)
+		for (j = 0; j < 13; j++)
 		{
 			if (s[i] == com[j] && (s[i + 1] > 96 && s[i + 1] < 123))
 				s[i + 1] = s[i + 1] - 32;
