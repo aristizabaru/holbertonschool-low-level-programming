@@ -10,8 +10,7 @@ char *cap_string(char *s)
 {
 
 	/*caracteres de comparación*/
-	char com[] = {' ', '\t', '\n', ',', ';', '.', '!',
-		      '?', '"', '(', ')', '{', '}', '\0'};
+	char com[] = " \t\n,;.!?\"(){}";
 	int i = 0, j;
 
 	/*comparar cada caracter con comparación y cambiar to Uppercase*/
