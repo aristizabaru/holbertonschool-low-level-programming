@@ -15,7 +15,7 @@ char *_strncpy(char *dest, char *src, int n)
 	int i = 0;
 
 	/*copio src a dest*/
-	while (i < n)
+	while (i < n && *(src + i))
 	{
 		*(dest + i) = *(src + i);
 		i++;
