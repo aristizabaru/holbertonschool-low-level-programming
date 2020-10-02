@@ -8,9 +8,10 @@
  */
 void print_number(int n)
 {
-	/*(s)signo, (r)esultado, (l)argo*/
+
+	/*(s)signo, (r)esultado*/
 	char s = '+';
-	int r = n, l = 0, i;
+	int r;
 
 	/*Guardar signo*/
 	if (n < 0)
@@ -20,31 +21,21 @@ void print_number(int n)
 		r = n;
 	}
 
-	/*largo del número*/
-	while (r > 9)
-	{
-		r /= 10;
-		l++;
-	}
-
 	/*imprimir signo*/
 	if (s == '-')
 		_putchar('-');
 
-	i = 0;
-	char num[l];
-
-	/*guardo números en array char*/
-	while (n)
+	/*rompe recursion*/
+	if (n == 0)
 	{
-		num[i] = (n % 10) + 48;
-		n /= 10;
-		i++;
+		return;
 	}
 
-	/*imprimo números*/
-	for (i = l; i >= 0; i--)
-	{
-		_putchar(num[i]);
-	}
+	/*extraer último digito*/
+	r = n % 10;
+
+	print_number(n / 10);
+
+	/*print r*/
+	_putchar(r + 48);
 }
