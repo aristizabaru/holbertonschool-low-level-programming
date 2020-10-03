@@ -1,17 +1,18 @@
 #include "holberton.h"
 
 /**
- * print_number - prints an integer
+ * print_number - print number
  * @n: number to print
  *
+ * Description: calculates lenght and sign
+ * sends number to print
  * Return: nothing
  */
 void print_number(int n)
 {
-
-	/*(s)signo, (r)esultado*/
+	/*(s)signo, (r)esultado, (l)argo*/
 	char s = '+';
-	int r;
+	int r = n, l = 0;
 
 	/*Guardar signo*/
 	if (n < 0)
@@ -21,21 +22,55 @@ void print_number(int n)
 		r = n;
 	}
 
+	/*largo del número*/
+	while (r > 9)
+	{
+		r /= 10;
+		l++;
+	}
+
 	/*imprimir signo*/
 	if (s == '-')
 		_putchar('-');
 
-	/*rompe recursion*/
-	if (n == 0)
+	/*imprimir número*/
+	print(l, n);
+}
+
+/**
+ * print - print number
+ * @l: lenght of the number
+ * @n: number to print
+ *
+ * Description: makes calculations and print
+ * number from back to the beggining
+ * Return: nothing
+ */
+void print(int l, int n)
+{
+	int i = 0, j, r, k = 1, maxL = l;
+
+	while (i < l)
 	{
-		return;
+		j = 0;
+		r = n;
+		if (l == maxL)
+		{
+			while (r > 9)
+				r /= 10;
+			_putchar(r + 48);
+		}
+		else
+		{
+			while (j < maxL - k)
+			{
+				r /= 10;
+				j++;
+			}
+			_putchar(r % 10 + 48);
+			k++;
+		}
+		l--;
 	}
-
-	/*extraer último digito*/
-	r = n % 10;
-
-	print_number(n / 10);
-
-	/*print r*/
-	_putchar(r + 48);
+	_putchar(n % 10 + 48);
 }
