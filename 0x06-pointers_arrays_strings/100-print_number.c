@@ -12,15 +12,16 @@ void print_number(int n)
 {
 	/*(s)signo, (r)esultado, (l)argo*/
 	char s = '+';
-	int r = n, l = 0;
+	int l = 0;
+	unsigned int r;
 
 	/*Guardar signo*/
 	if (n < 0)
 	{
 		s = '-';
-		n *= -1;
-		r = n;
+		r = n * -1;
 	}
+	r = n;
 
 	/*largo del número*/
 	while (r > 9)
@@ -48,7 +49,8 @@ void print_number(int n)
  */
 void print(int l, int n)
 {
-	int i = 0, j, r, k = 1, maxL = l;
+	int i = 0, j, k = 1, maxL = l;
+	unsigned int r;
 
 	while (i < l)
 	{
@@ -72,5 +74,7 @@ void print(int l, int n)
 		}
 		l--;
 	}
-	_putchar(n % 10 + 48);
+	r = n * -1;
+	_putchar(r % 10 + 48);
 }
+
