@@ -19,7 +19,8 @@ void print_number(int n)
 	if (n < 0)
 	{
 		s = '-';
-		r = n * -1;
+		n *= -1;
+		r = n;
 	}
 	r = n;
 
@@ -74,7 +75,7 @@ void print(int l, int n)
 		}
 		l--;
 	}
-	r = n * -1;
+	r = n;
 	_putchar(r % 10 + 48);
 }
 
