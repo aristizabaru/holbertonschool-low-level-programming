@@ -17,6 +17,9 @@ char *_strchr(char *s, char c)
 			return (s);
 		s++;
 	}
+	/*check null character*/
+	if (*(s + 1) == c)
+		return (s + 1);
 
 	return (NULL);
 }
