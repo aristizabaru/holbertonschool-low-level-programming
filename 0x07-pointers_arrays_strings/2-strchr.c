@@ -18,8 +18,8 @@ char *_strchr(char *s, char c)
 		s++;
 	}
 	/*check null character*/
-	if (*(s + 1) == c)
-		return (s + 1);
+	if (*s == c)
+		return (s);
 
 	return (NULL);
 }
