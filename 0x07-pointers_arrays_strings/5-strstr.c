@@ -25,6 +25,8 @@ char *_strstr(char *haystack, char *needle)
 		else
 		{
 			i = 0;
+			if (*haystack == needle[i])
+				i++;
 		}
 
 		haystack++;
