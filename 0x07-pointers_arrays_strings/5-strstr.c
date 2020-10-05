@@ -1,5 +1,5 @@
 #include "holberton.h"
-#define NULL ((char *)0)
+#define NULL ((char *)0);
 
 /**
  * _strstr -  locates a substring.
