@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * is_palindrome - compares if two strings are identicals
+ * wildcmp - compares if two strings are identicals
  * @s1: string 1
  * @s2: string 2
  * Description: s2 can contain the special character *
