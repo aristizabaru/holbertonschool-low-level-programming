@@ -11,8 +11,7 @@ void _print_rev_recursion(char *s)
 	/*base condition*/
 	if (*s == '\0')
 		return;
-	else
-		_print_rev_recursion(s + 1);
+	_print_rev_recursion(s + 1);
 	/*On hold until base contion is met*/
 	_putchar(*s);
 }
