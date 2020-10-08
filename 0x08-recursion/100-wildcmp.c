@@ -44,7 +44,24 @@ int look_wildcmp(char *s1, char *s2)
 	}
 	/*solves case of star with string repeated ahead*/
 	if (*s1 == *s2 && *(s2 - 1) == '*')
-		return (look_wildcmp(s1 + 1, s2 - 1));
+		return (look_other(s1 + 1, s2 - 1, 1));
 
 	return (wildcmp(s1, s2));
+}
+
+/**
+ * look_other - finds problems with *
+ * @s1: string 1
+ * @s2: string 2
+ * @i: iterador
+ *
+ * Return: 1 if identical, 0 if not
+ */
+int look_other(char *s1, char *s2, int i)
+{
+	if (*s1 == '\0')
+		return (look_wildcmp(s1, s2));
+	if (*s1 != *(s1 - i))
+		look_other(s1 + 1, s2, i + 1);
+	return (look_wildcmp(s1, s2));
 }

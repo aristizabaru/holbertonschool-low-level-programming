@@ -14,3 +14,4 @@ int _strlen(char *str);
 int check_palindrome(int l, int r, char *s);
 int wildcmp(char *s1, char *s2);
 int look_wildcmp(char *s1, char *s2);
+int look_other(char *s1, char *s2, int i);
