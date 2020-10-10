@@ -12,14 +12,14 @@ int main(int argc, char **argv)
 	int r = 0, i, c = 0;
 
 	/*check if there's two arguments*/
-	if (argc < 2)
+	if (argc == 1)
 		printf("0\n");
 	else
 	{
 		/*check for numbers and add*/
 		for (i = 1; i < argc; i++)
 		{
-			if (atoi(argv[i]) * 1 != 0)
+			if (atoi(argv[i]) * 1 != 0 && atoi(argv[i]) != 0)
 				r += atoi(argv[i]);
 			else
 				c = 1;
