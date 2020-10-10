@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 		/*check for numbers and add*/
 		for (i = 1; i < argc; i++)
 		{
-			if (atoi(argv[i]) * 1 != 0 || atoi(argv[i]) == 0)
+			if (atoi(argv[i]) != 0 || *argv[i] == '0')
 				r += atoi(argv[i]);
 			else
 				c = 1;
