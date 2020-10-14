@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * alloc_grid - concatenates two strings
+ * str_concat - concatenates two strings
  * @s1: string 1
  * @s2: string 2
  * Description: the new string is s1 + s2 + NULL char
@@ -17,19 +17,18 @@ char *str_concat(char *s1, char *s2)
 
 	/*check if theres is values in strings*/
 	if (s1 == NULL)
-		length++;
+		ls1 = 0;
+	else
+		ls1 = getLength(s1);
 
 	if (s2 == NULL)
-		length++;
-
+		ls2 = 0;
+	else
+		ls2 = getLength(s1);
 	/*get string1 length*/
-	ls1 = getLength(s1);
-	ls2 = getLength(s1);
 	length = ls1 + ls2;
-
 	/*allocate memory for new string + null char*/
 	p = (char *)malloc(sizeof(char) * length + 1);
-
 	/*if memory not allocated*/
 	if (p == NULL)
 		return (NULL);
@@ -71,4 +70,3 @@ int getLength(char *s)
 
 	return (l);
 }
-
