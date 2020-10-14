@@ -25,15 +25,16 @@ char *str_concat(char *s1, char *s2)
 		ls2 = 0;
 	else
 		ls2 = getLength(s1);
+
 	/*get string1 length*/
 	length = ls1 + ls2;
+
 	/*allocate memory for new string + null char*/
 	p = (char *)malloc(sizeof(char) * length + 1);
+
 	/*if memory not allocated*/
 	if (p == NULL)
 		return (NULL);
-
-	i = 0;
 
 	/*copy string to pointer*/
 	while (s1[i])
