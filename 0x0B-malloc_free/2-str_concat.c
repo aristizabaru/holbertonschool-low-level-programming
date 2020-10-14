@@ -31,12 +31,12 @@ char *str_concat(char *s1, char *s2)
 	/*concatenate strings*/
 	if (p == NULL)
 		return (NULL);
-	while (s1[i])
+	while (i < ls1)
 	{
 		p[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	while (j < ls2)
 	{
 		p[i + j] = s2[j];
 		j++;
