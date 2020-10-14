@@ -10,4 +10,8 @@ int getLength(char *s);
 int **alloc_grid(int width, int height);
 void free_grid(int **grid, int height);
 char *argstostr(int ac, char **av);
+int getCharacter(char *s, int n);
+int getStrings(char *s);
+char **strtow(char *str);
+char **populateMemory(char **p, char *str, int st);
 #endif /* HOLBERTON */
