@@ -9,31 +9,34 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int i, j, k = 0, n = 0;
-	char *s;
+	char *p = NULL;
+	int i, j, pos = 0, sum = 0;
 
-	if (ac <= 0 || av == NULL)
+	if (ac == 0 || av == NULL)
 		return (NULL);
-	for (i = 0; i < ac; i++)
+
+	/*get length of arguments*/
+	/*start from 1 to omit program name*/
+	for (i = 1; i < ac; i++)
 	{
 		for (j = 0; av[i][j]; j++)
-			n++;
-		n++;
+			;
+		sum += j;
 	}
-	n++;
-	s = malloc(n * sizeof(char));
-	if (s == NULL)
-		return (NULL);
-	for (i = 0; i < ac; i++)
+	/*sum \n byte space to allocate memory*/
+	sum += ac - 1;
+	p = (char *)malloc(sizeof(char) * sum);
+
+	/*print strings*/
+	for (i = 1; i < ac; i++)
 	{
 		for (j = 0; av[i][j]; j++)
 		{
-			s[k] = av[i][j];
-			k++;
+			p[pos] = av[i][j];
+			pos++;
 		}
-		s[k] = '\n';
-		k++;
+		p[pos] = '\n';
+		pos++;
 	}
-	s[k] = '\0';
-	return (s);
+	return (p);
 }
