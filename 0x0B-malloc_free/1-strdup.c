@@ -16,10 +16,9 @@ char *_strdup(char *str)
 		return (NULL);
 
 	/*get string length*/
-	while (str[i] != '\0')
+	while (str[length])
 	{
 		length++;
-		i++;
 	}
 
 	p = (char *)malloc(sizeof(char) * length);
@@ -28,10 +27,8 @@ char *_strdup(char *str)
 	if (p == NULL)
 		return (NULL);
 
-	i = 0;
-
 	/*copy string to pointer*/
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		p[i] = str[i];
 		i++;
