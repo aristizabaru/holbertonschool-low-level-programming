@@ -12,31 +12,54 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	unsigned int i, j, k, l;
-	char *s;
-
+	char *p = NULL;
+	unsigned int length = 0, ls1 = 0, ls2 = 0, i = 0, j = 0;
+	/*find length*/
 	if (s1 == NULL)
-		i = 0;
+		ls1 = 0;
 	else
-	{
-		for (i = 0; s1[i]; i++)
-			;
-	}
+		ls1 = getLength(s1);
 	if (s2 == NULL)
-		j = 0;
+		ls2 = 0;
 	else
-	{
-		for (j = 0; s2[j]; j++)
-			;
-	}
-	k = i + j + 1;
-	s = malloc(k * sizeof(char));
-	if (s == NULL)
+		ls2 = getLength(s1);
+
+	/*allocate memory + null char*/
+	length = ls1 + ls2 + 1;
+	p = (char *)malloc(sizeof(char) * length);
+
+	/*concatenate strings*/
+	if (p == NULL)
 		return (NULL);
-	for (l = 0; l < i; l++)
-		s[l] = s1[l];
-	for (l = 0; l < j; l++)
-		s[l + i] = s2[l];
-	s[i + j] = '\0';
-	return (s);
+	while (s1[i])
+	{
+		p[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		p[i + j] = s2[j];
+		j++;
+	}
+	/*add null char*/
+	p[i + j] = '\0';
+	return (p);
+}
+
+/**
+ * getLength - get string length
+ * @s: string
+ *
+ * Return: length
+ */
+int getLength(char *s)
+{
+	unsigned int l = 0;
+
+	while (s[l])
+	{
+		l++;
+	}
+
+	return (l);
 }
