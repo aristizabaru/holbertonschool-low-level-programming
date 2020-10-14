@@ -26,6 +26,8 @@ char *argstostr(int ac, char **av)
 	/*sum \n byte space to allocate memory*/
 	sum += ac - 1;
 	p = (char *)malloc(sizeof(char) * sum);
+	if (p == NULL)
+		return (NULL);
 
 	/*print strings*/
 	for (i = 1; i < ac; i++)
@@ -38,5 +40,6 @@ char *argstostr(int ac, char **av)
 		p[pos] = '\n';
 		pos++;
 	}
+	p[pos] = '\n';
 	return (p);
 }
