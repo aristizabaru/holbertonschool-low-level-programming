@@ -12,25 +12,25 @@ char *argstostr(int ac, char **av)
 	char *p = NULL;
 	int i, j, pos = 0, sum = 0;
 
-	if (ac == 0 || av == NULL)
+	if (ac < 1 || av == NULL)
 		return (NULL);
 
 	/*get length of arguments*/
 	/*start from 1 to omit program name*/
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		for (j = 0; av[i][j]; j++)
 			;
 		sum += j;
 	}
 	/*sum \n byte space to allocate memory*/
-	sum += ac - 1;
+	sum += ac;
 	p = (char *)malloc(sizeof(char) * sum);
 	if (p == NULL)
 		return (NULL);
 
 	/*print strings*/
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		for (j = 0; av[i][j]; j++)
 		{
@@ -40,6 +40,6 @@ char *argstostr(int ac, char **av)
 		p[pos] = '\n';
 		pos++;
 	}
-	p[pos] = '\n';
+	p[pos] = '\0';
 	return (p);
 }
