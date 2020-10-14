@@ -23,8 +23,8 @@ char *argstostr(int ac, char **av)
 			;
 		sum += j;
 	}
-	/*sum \n byte space to allocate memory*/
-	sum += ac;
+	/*sum \n byte space to allocate memory + null char*/
+	sum += ac + 1;
 	p = (char *)malloc(sizeof(char) * sum);
 	if (p == NULL)
 		return (NULL);
