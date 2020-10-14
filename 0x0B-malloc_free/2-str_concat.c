@@ -22,7 +22,7 @@ char *str_concat(char *s1, char *s2)
 	if (s2 == NULL)
 		ls2 = 0;
 	else
-		ls2 = getLength(s1);
+		ls2 = getLength(s2);
 
 	/*allocate memory + null char*/
 	length = ls1 + ls2 + 1;
