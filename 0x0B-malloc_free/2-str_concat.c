@@ -12,62 +12,31 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *p = NULL;
-	unsigned int length = 0, i = 0, j = 0, ls1 = 0, ls2 = 0;
+	unsigned int i, j, k, l;
+	char *s;
 
-	/*check if theres is values in strings*/
 	if (s1 == NULL)
-		ls1 = 0;
+		i = 0;
 	else
-		ls1 = getLength(s1);
-
+	{
+		for (i = 0; s1[i]; i++)
+			;
+	}
 	if (s2 == NULL)
-		ls2 = 0;
+		j = 0;
 	else
-		ls2 = getLength(s1);
-
-	/*get string1 length*/
-	length = ls1 + ls2;
-
-	/*allocate memory for new string + null char*/
-	p = (char *)malloc(sizeof(char) * length + 1);
-
-	/*if memory not allocated*/
-	if (p == NULL)
+	{
+		for (j = 0; s2[j]; j++)
+			;
+	}
+	k = i + j + 1;
+	s = malloc(k * sizeof(char));
+	if (s == NULL)
 		return (NULL);
-
-	/*copy string to pointer*/
-	while (s1[i])
-	{
-		p[i] = s1[i];
-		i++;
-	}
-	/*copy string to pointer*/
-	while (s2[j])
-	{
-		p[i] = s2[j];
-		j++;
-		i++;
-	}
-	/*asign null character to end*/
-	p[i] = '\0';
-	return (p);
-}
-
-/**
- * getLength - get string length
- * @s: string
- *
- * Return: length
- */
-int getLength(char *s)
-{
-	unsigned int l = 0;
-
-	while (s[l])
-	{
-		l++;
-	}
-
-	return (l);
+	for (l = 0; l < i; l++)
+		s[l] = s1[l];
+	for (l = 0; l < j; l++)
+		s[l + i] = s2[l];
+	s[i + j] = '\0';
+	return (s);
 }
