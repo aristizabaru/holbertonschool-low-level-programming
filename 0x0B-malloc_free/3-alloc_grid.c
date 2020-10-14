@@ -1,36 +1,42 @@
 #include "holberton.h"
 
 /**
- * alloc_grid - creates a 2 dimensional array of integers initialized to 0
- * @width: width of array
- * @height: height of array
+ * alloc_grid - create 2D array of integers
+ * @width: ancho
+ * @height: largo
+ * Description: each element is initializaded to 0
  *
- * Return: a double pointer to the 2D array
+ * Return: pointer to 2D array
+ * if any parameter == 0 return NULL
  */
 int **alloc_grid(int width, int height)
 {
+	int **p = NULL;
 	int i, j;
-	int **a;
 
-	if (width <= 0 || height <= 0)
+	/*check parameters*/
+	if (width < 1 || height < 1)
 		return (NULL);
-	a = (int **)malloc(sizeof(int *) * height);
-	if (a == NULL)
+
+	/*allocate memory to create colums*/
+	p = (int **)malloc(sizeof(int) * height);
+
+	/*check if memory allocation*/
+	if (p == NULL)
 		return (NULL);
+
+	/*allocate memory to create rows in each column*/
 	for (i = 0; i < height; i++)
 	{
-		a[i] = (int *)malloc(sizeof(int) * width);
-		if (a[i] == NULL)
-		{
-			for (j = 0; j < i; j++)
-				free(a[j]);
-			free(a);
+		p[i] = (int *)malloc(sizeof(int) * width);
+		if (p[i] == NULL)
 			return (NULL);
-		}
+		/*initialize with 0*/
 		for (j = 0; j < width; j++)
 		{
-			a[i][j] = 0;
+			p[i][j] = 0;
 		}
 	}
-	return (a);
+
+	return (p);
 }
