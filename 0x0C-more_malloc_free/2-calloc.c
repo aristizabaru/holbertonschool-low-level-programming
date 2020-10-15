@@ -10,7 +10,8 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int *p = NULL;
+	void *p = NULL;
+	char *filler = NULL;
 	unsigned int i;
 
 	/*check arguments*/
@@ -21,9 +22,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	/*check memory*/
 	if (p == NULL)
 		return (NULL);
+	/*assign p to filler*/
+	filler = p;
 	/*initialice memory to zero*/
 	for (i = 0; i < nmemb; i++)
-		p[i] = 0;
+		filler[i] = '\0';
 
 	/*return pointer cast to void*/
 	return (p);
