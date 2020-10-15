@@ -10,25 +10,24 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-    void *p = NULL;
-    char *filler = NULL;
-    unsigned int i;
+	void *p = NULL;
+	char *filler = NULL;
+	unsigned int i;
 
-    /*check arguments*/
-    if (nmemb == 0 || size == 0)
-        return (NULL);
-    /*allocate memory*/
-    p = malloc(nmemb * size);
-    /*check memory*/
-    if (p == NULL)
-        return (NULL);
-    /*assign p to filler*/
-    filler = p;
-    /*initialice memory to zero*/
-    for (i = 0; i < (size * nmemb); i++)
-        filler[i] = '\0';
+	/*check arguments*/
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	/*allocate memory*/
+	p = malloc(nmemb * size);
+	/*check memory*/
+	if (p == NULL)
+		return (NULL);
+	/*assign p to filler*/
+	filler = p;
+	/*initialice memory to zero*/
+	for (i = 0; i < (size * nmemb); i++)
+		filler[i] = '\0';
 
-    /*return pointer cast to void*/
-    return (p);
+	/*return pointer cast to void*/
+	return (p);
 }
-
