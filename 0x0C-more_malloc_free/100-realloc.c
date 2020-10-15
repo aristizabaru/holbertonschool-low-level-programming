@@ -12,49 +12,32 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *p = NULL;
-	char *fillerNew = p;
+	char *filler = NULL;
+	unsigned int i, max = new_size;
 	char *fillerOld = ptr;
-	unsigned int i = 0;
 
-	/*check if there's a change in size*/
-	if (new_size == old_size)
-		return (ptr);
-	if (new_size == 0 && ptr != NULL)
+	/*check cases*/
+	if (new_size == 0 && p != NULL)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	/*allocate new memory to new pointer*/
+	if (new_size == old_size)
+		return (ptr);
+
+	/*allocate memory*/
 	p = malloc(new_size);
 	if (p == NULL)
 		return (NULL);
-	/*return new pointer if old ptr is null*/
+	/*asing filler to p when is pointing to something!!!*/
+	filler = p;
 	if (ptr == NULL)
-	{
 		return (p);
-	}
-	/*copy content to new pointer*/
+	/*fill array*/
 	if (new_size > old_size)
-	{
-		while (fillerOld[i])
-		{
-			fillerNew[i] = fillerOld[i];
-			i++;
-		}
-		free(ptr);
-		free(fillerNew);
-		free(fillerOld);
-	}
-	else
-	{
-		for (; i < new_size; i++)
-		{
-			fillerNew[i] = fillerOld[i];
-		}
-		free(ptr);
-		free(fillerNew);
-		free(fillerOld);
-	}
-
+		max = old_size;
+	for (i = 0; i < max; i++)
+		filler[i] = fillerOld[i];
+	free(ptr);
 	return (p);
 }
