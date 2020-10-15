@@ -8,14 +8,6 @@
  * Return: void pointer
  * if fails return NULL
  */
-/**
- * _calloc - allocates memory for an array
- * @nmemb: number of elements
- * @size: size of elements
- *
- * Return: void pointer
- * if fails return NULL
- */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	int *p = NULL;
