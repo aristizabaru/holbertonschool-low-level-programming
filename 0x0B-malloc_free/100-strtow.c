@@ -40,7 +40,7 @@ int getStrings(char *s)
 	{
 		if (s[i] >= 33 && s[i] <= 126)
 		{
-			if (s[i - 1] == ' ')
+			if (s[i - 1] == ' ' || s[i - 1] == '\0')
 				c++;
 		}
 		i++;
@@ -103,7 +103,6 @@ char **strtow(char *str)
 		return (NULL);
 
 	st = getStrings(str);
-	printf("%d\n", st);
 
 	/*Allocate memory for pointers to rows of 2D array*/
 	p = (char **)malloc(sizeof(char *) * st + 1);
