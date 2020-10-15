@@ -19,23 +19,31 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	/*check arguments*/
 	if (new_size == old_size)
 		return (ptr);
+
+	/*checks if ptr is null*/
+	if (ptr == NULL)
+	{
+		newp = malloc(new_size);
+		if (newp == NULL)
+			return (NULL);
+		free(ptr);
+		return (newp);
+	}
+
+	/*checks if size is 0*/
 	if (new_size == 0 && ptr != NULL)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	/*allocate new memory to new pointer*/
-	newp = malloc(new_size);
-	/*check success*/
+
+	newp = malloc(sizeof(ptr) * new_size);
 	if (newp == NULL)
-		return (NULL);
-	/*copy content from old string to new*/
-	/*return new pointer if old ptr is null*/
-	if (ptr == NULL)
 	{
 		free(ptr);
-		return (newp);
+		return (NULL);
 	}
+
 	/*copy content to new pointer*/
 	if (new_size > old_size)
 	{
