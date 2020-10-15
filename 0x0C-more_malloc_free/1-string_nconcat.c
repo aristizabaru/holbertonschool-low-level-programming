@@ -34,10 +34,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int i = 0, j = 0;
 
 	/*check for NULL in the string*/
-	if (s1 != NULL)
-		s1length = getLength(s1);
-	if (s2 != NULL)
-		s2length = getLength(s2);
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+	s1length = getLength(s1);
+	s2length = getLength(s2);
 	/*check if n is bigger than s2*/
 	if (n <= s2length)
 		s2length = n;
