@@ -104,6 +104,9 @@ char **strtow(char *str)
 
 	st = getStrings(str);
 
+	if (st == 0)
+		return (NULL);
+
 	/*Allocate memory for pointers to rows of 2D array*/
 	p = (char **)malloc(sizeof(char *) * st + 1);
 
