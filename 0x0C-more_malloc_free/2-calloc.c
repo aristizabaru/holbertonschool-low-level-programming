@@ -10,7 +10,7 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *p = NULL;
+	int *p = NULL;
 	unsigned int i;
 
 	/*check arguments*/
@@ -23,7 +23,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	/*initialice memory to zero*/
 	for (i = 0; i < nmemb; i++)
-		p[i] = '\0';
+		p[i] = 0;
 
 	/*return pointer cast to void*/
 	return (p);
