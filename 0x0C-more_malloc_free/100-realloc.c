@@ -11,8 +11,9 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *newp = NULL;
-	char *optr = ptr;
+	void *newp = NULL;
+	char *fillerNew = newp;
+	char *fillerOld = ptr;
 	unsigned int i = 0;
 
 	/*check arguments*/
@@ -38,22 +39,22 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	/*copy content to new pointer*/
 	if (new_size > old_size)
 	{
-		while (optr[i])
+		while (fillerOld[i])
 		{
-			newp[i] = optr[i];
+			fillerNew[i] = fillerOld[i];
 			i++;
 		}
-		free(ptr);
-		free(optr);
+		free(fillerNew);
+		free(fillerOld);
 	}
 	else
 	{
 		for (; i < new_size; i++)
 		{
-			newp[i] = optr[i];
+			fillerNew[i] = fillerOld[i];
 		}
-		free(ptr);
-		free(optr);
+		free(fillerNew);
+		free(fillerOld);
 	}
 
 	return ((void *)newp);
