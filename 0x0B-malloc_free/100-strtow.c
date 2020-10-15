@@ -1,5 +1,6 @@
 #include "holberton.h"
 
+
 /**
  * getCharacter - number of char of a word
  * @s: string to evaluate words
@@ -108,7 +109,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	/*Allocate memory for pointers to rows of 2D array*/
-	p = (char **)malloc(sizeof(char *) * st + 1);
+	p = malloc(sizeof(p) * st + 1);
 
 	if (p == NULL)
 		return (NULL);
@@ -119,7 +120,7 @@ char **strtow(char *str)
 	for (i = 0; i < st; i++)
 	{
 		/*the las +1 is for the null char*/
-		p[i] = (char *)malloc(sizeof(char) * getCharacter(str, i + 1) + 1);
+		p[i] = malloc(sizeof(p[i]) * getCharacter(str, i + 1) + 1);
 
 		/*liberates memory if fails // rows and colums*/
 		if (p[i] == NULL)
