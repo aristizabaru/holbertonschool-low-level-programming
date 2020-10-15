@@ -24,8 +24,7 @@ int *array_range(int min, int max)
 		return (NULL);
 	/*populate memory from min to max*/
 	for (i = 0; i <= length; i++, min++)
-	{
 		p[i] = min;
-	}
+
 	return (p);
 }
