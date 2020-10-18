@@ -160,7 +160,7 @@ int main(int arc, char **argv)
 	/*finds lenght of number*/
 	lnum = numberLength(res);
 	/*allocate memory for result + null char*/
-	str = malloc(sizeof(*str) * res + 1);
+	str = malloc(sizeof(*str) * lnum + 1);
 	/*number to string*/
 	str = numberToString(str, res, lnum);
 	/*print result*/
