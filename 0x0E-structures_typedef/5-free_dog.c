@@ -8,6 +8,9 @@
  */
 void free_dog(dog_t *d)
 {
+	/*check for null pointer*/
+	if (d == null)
+		return;
 	free(d->name);
 	free(d->owner);
 	free(d);
