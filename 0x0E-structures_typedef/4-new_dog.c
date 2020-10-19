@@ -16,6 +16,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (yourDog == NULL)
 		return (NULL);
 	/*assign new data to members*/
-	*(yourDog) = (dog_t){name, age, owner};
+	yourDog->name = name;
+	yourDog->age = age;
+	yourDog->owner = owner;
 	return (yourDog);
 }
