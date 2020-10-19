@@ -50,21 +50,31 @@ dog_t *new_dog(char *name, float age, char *owner)
 	/*check arguments*/
 	if (name == NULL || age < 0 || owner == NULL)
 		return (NULL);
-	/*make copy of name*/
-	newName = malloc(sizeof(*newName) * getLength(name) + 1);
-	if (newName == NULL)
-		return (NULL);
-	copyString(name, newName);
-	/*make copy of owner*/
-	newOwner = malloc(sizeof(*newOwner) * getLength(owner) + 1);
-	if (newOwner == NULL)
-		return (NULL);
-	copyString(owner, newOwner);
 
 	/*Allocate memory for new structure*/
 	yourDog = malloc(sizeof(dog_t));
 	if (yourDog == NULL)
 		return (NULL);
+
+	/*make copy of name*/
+	newName = malloc(sizeof(*newName) * getLength(name) + 1);
+	if (newName == NULL)
+	{
+		free(yourDog);
+		return (NULL);
+	}
+	copyString(name, newName);
+
+	/*make copy of owner*/
+	newOwner = malloc(sizeof(*newOwner) * getLength(owner) + 1);
+	if (newOwner == NULL)
+	{
+		free(newName);
+		free(yourDog);
+		return (NULL);
+	}
+	copyString(owner, newOwner);
+
 	/*assign new data to members*/
 	yourDog->name = newName;
 	yourDog->age = age;
