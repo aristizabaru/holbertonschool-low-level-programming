@@ -15,21 +15,21 @@ int main(int argc, char *argv[])
 	/*wrong number of arguments*/
 	if (argc != 4)
 	{
-		printf("ERROR 98\n");
+		printf("ERROR\n");
 		exit(98);
 	}
 	/*wrong operator*/
 	/*check with get_op_func if it gets back NULL*/
 	if (get_op_func(argv[2]) == NULL || argv[2][1] != '\0')
 	{
-		printf("ERROR 99\n");
+		printf("ERROR\n");
 		exit(99);
 	}
 	/*check if users try to / or % by 0*/
 	/*target the first character of string for comparation*/
 	if (argv[3][0] == '0' && (argv[2][0] == '/' || argv[2][0] == '%'))
 	{
-		printf("ERROR 100\n");
+		printf("ERROR\n");
 		exit(100);
 	}
 
