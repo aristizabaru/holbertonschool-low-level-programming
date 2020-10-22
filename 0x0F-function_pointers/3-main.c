@@ -26,8 +26,8 @@ int main(int argc, char *argv[])
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
 	/*check division and modulo*/
-	if ((argv[2] == '/' && num2 == 0) ||
-	    (argv[2] == '%' && num2 == 0))
+	if ((argv[2][0] == '/' && num2 == 0) ||
+	    (argv[2][0] == '%' && num2 == 0))
 	{
 		printf("Error\n");
 		exit(100);
