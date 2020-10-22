@@ -9,33 +9,36 @@
  */
 int main(int argc, char *argv[])
 {
-	int num1, num2;
-	/*check arguments count*/
+	int num1 = 0, num2 = 0;
+
+	/*checks*/
+	/*wrong number of arguments*/
 	if (argc != 4)
 	{
-		printf("Error\n");
+		printf("ERROR 98\n");
 		exit(98);
 	}
-	/*check operator*/
-	if (get_op_func(argv[2]) == NULL || argv[2][1] != '\0')
+	/*wrong operator*/
+	/*check with get_op_func if it gets back NULL*/
+	if (get_op_func(argv[2]) == NULL)
 	{
-		printf("Error\n");
+		printf("ERROR 99\n");
 		exit(99);
 	}
-
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
-	/*check division and modulo*/
-	if ((argv[2][0] == '/' && num2 == 0) ||
-	    (argv[2][0] == '%' && num2 == 0))
+	/*check if users try to / or % by 0*/
+	/*target the first character of string for comparation*/
+	if (argv[3][0] == '0' && (argv[2][0] == '/' || argv[2][0] == '%'))
 	{
-		printf("Error\n");
+		printf("ERROR 100\n");
 		exit(100);
 	}
 
-	/*call fuction*/
-	printf("%d\n", get_op_func(argv[2])(num1, num2));
+	/*store numbers*/
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[3]);
 
+	/*send string and get back address of function*/
+	printf("%d\n", get_op_func(argv[2])(num1, num2));
 	return (0);
 }
 
