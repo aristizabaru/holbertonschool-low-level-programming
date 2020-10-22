@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	}
 	/*wrong operator*/
 	/*check with get_op_func if it gets back NULL*/
-	if (get_op_func(argv[2]) == NULL)
+	if (get_op_func(argv[2]) == NULL || argv[2][1] != '\0')
 	{
 		printf("ERROR 99\n");
 		exit(99);
