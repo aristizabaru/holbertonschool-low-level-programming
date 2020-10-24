@@ -70,6 +70,7 @@ void print_all(const char *const format, ...)
 		{"s", printString},
 		{NULL, NULL}};
 	unsigned int i = 0, j;
+	char *separator = "";
 
 	/*start list*/
 	va_start(pa, format);
@@ -81,10 +82,10 @@ void print_all(const char *const format, ...)
 		{
 			if (*(formato[j].code) == *(format + i))
 			{
+				printf("%s", separator);
 				formato[j].print(pa);
-				/*check conditions to print ,*/
-				if (*(format + (i + 1)) != '\0')
-					printf(", ");
+				separator = ", ";
+				break;
 			}
 			j++;
 		}
