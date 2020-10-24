@@ -1,6 +1,17 @@
 #include "variadic_functions.h"
 
 /**
+ * printChar- print a char
+ * @pa: argument to print
+ *
+ * Return: nothing
+ */
+void printChar(va_list pa)
+{
+	printf("%c", va_arg(pa, int));
+}
+
+/**
  * printIntenger - print an interger
  * @pa: argument to print
  *
