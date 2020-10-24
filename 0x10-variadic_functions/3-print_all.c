@@ -42,6 +42,7 @@ void printFloat(va_list pa)
 void printString(va_list pa)
 {
 	char *string = va_arg(pa, char *);
+
 	if (string == NULL)
 	{
 		printf("(nil)");
@@ -61,21 +62,22 @@ void printString(va_list pa)
 void print_all(const char *const format, ...)
 {
 	va_list pa;
-	/*create array of formats (code + function)*/
+	/*create array of formats (code + function) and NULL terminator*/
 	formato formato[] = {
 		{"c", printChar},
 		{"i", printIntenger},
 		{"f", printFloat},
-		{"s", printString}};
+		{"s", printString},
+		{NULL, NULL}};
 	unsigned int i = 0, j;
 
 	/*start list*/
 	va_start(pa, format);
 	/*check arguments and print*/
-	while (*(format + i))
+	while (format && *(format + i))
 	{
 		j = 0;
-		while (j < 4)
+		while (formato[j].code != NULL)
 		{
 			if (*(formato[j].code) == *(format + i))
 			{
