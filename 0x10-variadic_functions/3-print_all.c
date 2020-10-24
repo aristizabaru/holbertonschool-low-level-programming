@@ -1,6 +1,21 @@
 #include "variadic_functions.h"
 
 /**
+ * struct formato - format code and functions
+ * @code: format code
+ * @print: function pointer to print format
+ *
+ * Description: data to evaluate how to print
+ */
+struct formato
+{
+	char *code;
+	void (*print)(va_list);
+};
+
+typedef struct formato formato;
+
+/**
  * printChar- print a char
  * @pa: argument to print
  *
@@ -42,10 +57,9 @@ void printFloat(va_list pa)
 void printString(va_list pa)
 {
 	char *string = va_arg(pa, char *);
-
 	if (string == NULL)
 	{
-		printf("%s", "(nil)");
+		printf("(nil)");
 		return;
 	}
 	printf("%s", string);
@@ -63,10 +77,11 @@ void print_all(const char *const format, ...)
 {
 	va_list pa;
 	/*create array of formats (code + function)*/
-	formato formato[] = {{'c', printChar},
-			     {'i', printIntenger},
-			     {'f', printFloat},
-			     {'s', printString}};
+	formato formato[] = {
+		{"c", printChar},
+		{"i", printIntenger},
+		{"f", printFloat},
+		{"s", printString}};
 	unsigned int i = 0, j;
 
 	/*start list*/
@@ -77,7 +92,7 @@ void print_all(const char *const format, ...)
 		j = 0;
 		while (j < 4)
 		{
-			if (formato[j].code == *(format + i))
+			if (*(formato[j].code) == *(format + i))
 			{
 				formato[j].print(pa);
 				/*check conditions to print ,*/

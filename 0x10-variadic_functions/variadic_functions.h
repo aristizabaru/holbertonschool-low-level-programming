@@ -22,7 +22,7 @@ void printChar(va_list pa);
  */
 struct formato
 {
-	char code;
+	char *code;
 	void (*print)(va_list);
 };
 typedef struct formato formato;
