@@ -1,7 +1,7 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers -  prints strings, followed by a new line
+ * print_strings - prints strings, followed by a new line
  * @separator: string to be printed between strings
  * @n: numberof strings passed
  * Description: if separator is NULL doesn't print
@@ -15,20 +15,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	va_list pa;
 	char *s;
 
-	/*check for separator*/
-	if (separator == NULL)
-	{
-		va_end(pa);
-		return;
-	}
 	va_start(pa, n);
 	for (i = 0; i < n; i++)
 	{
 		/*check for null*/
 		s = va_arg(pa, char *);
 		printf("%s", s != NULL ? s : "(nil)");
-		if (i + 1 != n)
-			printf("%c ", separator[0]);
+		if (i + 1 != n && separator != NULL)
+			printf("%s", separator);
 	}
 	printf("\n");
 	va_end(pa);
