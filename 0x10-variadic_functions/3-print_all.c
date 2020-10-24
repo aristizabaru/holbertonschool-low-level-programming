@@ -1,21 +1,6 @@
 #include "variadic_functions.h"
 
 /**
- * struct formato - format code and functions
- * @code: format code
- * @print: function pointer to print format
- *
- * Description: data to evaluate how to print
- */
-struct formato
-{
-	char *code;
-	void (*print)(va_list);
-};
-
-typedef struct formato formato;
-
-/**
  * printChar- print a char
  * @pa: argument to print
  *
