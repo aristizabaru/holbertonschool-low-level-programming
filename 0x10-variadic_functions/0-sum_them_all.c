@@ -9,13 +9,12 @@
 int sum_them_all(const unsigned int n, ...)
 {
 	unsigned int result = 0, i;
+	/*create list variable*/
+	va_list pa;
 
 	result = 0;
 	if (n == 0)
 		return (result);
-
-	/*create list variable*/
-	va_list pa;
 	/*start list*/
 	va_start(pa, n);
 	/*process list*/
