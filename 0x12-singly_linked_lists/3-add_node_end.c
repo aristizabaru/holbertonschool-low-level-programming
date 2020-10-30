@@ -1,4 +1,5 @@
 #include "lists.h"
+
 /**
  * get_string_length - return string length
  * @str: string
