@@ -16,21 +16,29 @@ unsigned int get_string_length(char *str)
 }
 
 /**
- * add_node_end - adds a new node at the end
+ * add_node_end -  adds a new node at the end of a list_t list
  * @head: head of the list
- * @str: data to be added
+ * @str: string to fill member str
+ * Description: str needs to be duplicated
  *
- * Return: list
+ * Return: address of the new element, or NULL if it failed
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *temp = NULL;
 	list_t *newNode = NULL;
 
+	if (str == NULL)
+		return (NULL);
 	newNode = malloc(sizeof(list_t));
 	if (newNode == NULL)
 		return (NULL);
 	newNode->str = strdup(str);
+	if (newNode->str == NULL)
+	{
+		free(newNode);
+		return (NULL);
+	}
 	newNode->len = get_string_length(newNode->str);
 	newNode->next = NULL;
 	if (*head == NULL)
@@ -38,12 +46,9 @@ list_t *add_node_end(list_t **head, const char *str)
 	else
 	{
 		temp = *head;
-		while (temp->next != NULL)
-		{
+		while (temp->next)
 			temp = temp->next;
-		}
 		temp->next = newNode;
 	}
-
 	return (*head);
 }
