@@ -24,21 +24,21 @@ size_t print_listint_safe(const listint_t *head)
 		{
 			/*tortoise to node 1*/
 			tortoise = head;
-			printf("[%p} %d\n", (void *)tortoise, tortoise->n);
+			printf("[%p] %d\n", (void *)tortoise, tortoise->n);
 			count++;
 			/*loop til they find*/
 			while (tortoise->next != hare->next)
 			{
 				tortoise = tortoise->next;
 				hare = hare->next;
-				printf("[%p} %d\n", (void *)tortoise, tortoise->n);
+				printf("[%p] %d\n", (void *)tortoise, tortoise->n);
 				count++;
 			}
 
 			while (tortoise != hare)
 			{
 				tortoise = tortoise->next;
-				printf("[%p} %d\n", (void *)tortoise, tortoise->n);
+				printf("[%p] %d\n", (void *)tortoise, tortoise->n);
 				count++;
 			}
 			break;
@@ -67,7 +67,7 @@ size_t print_listint_dir(const listint_t *h)
 
 	while (h)
 	{
-		printf("[%p} %d\n", (void *)h, h->n);
+		printf("[%p] %d\n", (void *)h, h->n);
 		h = h->next;
 		count++;
 	}
