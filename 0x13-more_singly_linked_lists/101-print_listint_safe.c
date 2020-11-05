@@ -9,67 +9,72 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *hare = NULL;
-	const listint_t *tortoise = NULL;
-	size_t count = 0;
+	size_t count, i = 0;
 
 	if (head == NULL)
 		exit(98);
-	tortoise = head->next;
-	hare = head->next->next;
-	while (hare && hare->next)
-	{
-		/*check if they meet*/
-		if (hare == tortoise)
-		{
-			/*tortoise to node 1*/
-			tortoise = head;
-			printf("[%p] %d\n", (void *)tortoise, tortoise->n);
-			count++;
-			/*loop til they find*/
-			while (tortoise->next != hare->next)
-			{
-				tortoise = tortoise->next;
-				hare = hare->next;
-				printf("[%p] %d\n", (void *)tortoise, tortoise->n);
-				count++;
-			}
 
-			while (tortoise != hare)
-			{
-				tortoise = tortoise->next;
-				printf("[%p] %d\n", (void *)tortoise, tortoise->n);
-				count++;
-			}
-			break;
+	count = get_safe_list_length(head);
+	if (count == 0) /*case if list has no loop*/
+	{
+		while (head)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+			count++;
 		}
-		tortoise = tortoise->next;
-		hare = hare->next->next;
 	}
-	if (count == 0)
-		count = print_listint_dir(head);
+	else /*case if list has lopp*/
+	{
+		while (i < count)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+			i++;
+		}
+
+		printf("-> [%p] %d\n", (void *)head, head->n);
+	}
+
 	return (count);
 }
 
 /**
- * print_listint_dir - print all elements of a listint_t list
- * @h: pointer to head of list
+ * get_safe_list_length - get lenth of list with loop
+ * @head: head of list
  *
- * Return: number of nodes
+ * Return: number of nodes in the list
+ * If there's no loop return 0
  */
-size_t print_listint_dir(const listint_t *h)
+size_t get_safe_list_length(const listint_t *head)
 {
-	size_t count = 0;
+	const listint_t *hare = NULL;
+	const listint_t *tortoise = NULL;
+	size_t count = 1;
 
-	/*check if h is null*/
-	if (h == NULL)
-		return (count);
-
-	while (h)
+	tortoise = head->next;
+	hare = head->next->next;
+	while (hare)
 	{
-		printf("[%p] %d\n", (void *)h, h->n);
-		h = h->next;
-		count++;
+		if (tortoise == hare)
+		{
+			tortoise = head;
+			while (tortoise != hare)
+			{
+				count++;
+				tortoise = tortoise->next;
+				hare = hare->next;
+			}
+			tortoise = tortoise->next;
+			while (tortoise != hare)
+			{
+				count++;
+				tortoise = tortoise->next;
+			}
+			return (count);
+		}
+		tortoise = tortoise->next;
+		hare = (hare->next)->next;
 	}
-	return (count);
+	return (0);
 }
