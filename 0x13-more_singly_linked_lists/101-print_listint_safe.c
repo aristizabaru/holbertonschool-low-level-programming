@@ -47,7 +47,7 @@ size_t print_listint_safe(const listint_t *head)
 		hare = hare->next->next;
 	}
 	if (count == 0)
-		count = print_listint(head);
+		count = print_listint_dir(head);
 	return (count);
 }
 
