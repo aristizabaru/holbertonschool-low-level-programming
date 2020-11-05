@@ -17,6 +17,11 @@ size_t print_listint_safe(const listint_t *head)
 	count = get_safe_list_length(head);
 	if (count == 0) /*case if list has no loop*/
 	{
+		if (head->next == NULL)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			return (count);
+		}
 		while (head)
 		{
 			printf("[%p] %d\n", (void *)head, head->n);
@@ -52,6 +57,8 @@ size_t get_safe_list_length(const listint_t *head)
 	const listint_t *tortoise = NULL;
 	size_t count = 1;
 
+	if (head->next == NULL)
+		return (count);
 	tortoise = head->next;
 	hare = head->next->next;
 	while (hare)
