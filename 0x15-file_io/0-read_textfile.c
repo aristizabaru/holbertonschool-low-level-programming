@@ -14,7 +14,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	size_t n = 0;
 	int fd = 0;
-	char buff[1024];
+	char *buff = NULL;
 
 	/*check for file*/
 	if (filename == NULL)
@@ -23,13 +23,19 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	fd = open(filename, O_RDWR | O_CREAT);
 	if (fd < 0)
 		return (n);
+	/*create space in memory for file*/
+	buff = malloc(sizeof(*buff) * letters);
+	if (buff == NULL)
+		return (n);
 	/*read file into buffer*/
 	n = read(fd, buff, letters);
 	/*print file with chars passed*/
 	n = write(STDOUT_FILENO, buff, n);
-	if (n < letters)
+	printf("Letters: %ld - N: %ld\n", letters, n);
+	if (n < 0)
 		n = 0;
-	/*close table entry for file descriptor*/
+	/*cierro table entry for file descriptor*/
 	close(fd);
+	free(buff);
 	return (n);
 }
