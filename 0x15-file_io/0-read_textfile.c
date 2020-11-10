@@ -1,24 +1,39 @@
 #include "holberton.h"
 
 /**
- * read_textfile - reads a text file and prints it to stdout
- * @filename: file to be read
- * @letters:  number of letters it should read and print
- *
- * Return: number of letters it could read and print
- * if the file can not be opened or read, return 0
- * if filename is NULL return 0
- * if write fails or does not write the expected amount of bytes, return 0
+ * read_textfile - Read a text file and print to POSIX stdout
+ * @filename: char string of files name
+ * @letters: number of letters to read and print
+ * Return: number of letters read and printed, or 0 if error
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	size_t n = 0;
-	/*check arguments*/
-	if (filename)
-		return (n);
+	int fd;
+	ssize_t rcount, wcount;
+	char *buffer;
 
-	n = write(STDOUT_FILENO, filename, letters);
-	if (n == -1)
+	if (filename == NULL)
 		return (0);
-	return (n);
+
+	fd = open(filename, O_RDWR);
+	if (fd == -1)
+		return (0);
+
+	buffer = malloc(sizeof(char) * letters);
+	if (buffer == NULL)
+	{
+		free(buffer);
+		return (0);
+	}
+	rcount = read(fd, buffer, letters);
+	if (rcount == -1)
+		return (0);
+
+	wcount = write(STDOUT_FILENO, buffer, rcount);
+	if (wcount == -1 || rcount != wcount)
+		return (0);
+	free(buffer);
+
+	close(fd);
+	return (wcount);
 }
