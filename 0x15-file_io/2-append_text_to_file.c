@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * create_file - appends text at the end of a file
+ * append_text_to_file - appends text at the end of a file
  * @filename: name of file
  * @text_content: string to add to file
  *
