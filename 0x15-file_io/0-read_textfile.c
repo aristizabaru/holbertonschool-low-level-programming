@@ -12,30 +12,29 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	size_t n = 0;
+	size_t lenght = 0, final_length = 0;
 	int fd = 0;
 	char *buff = NULL;
 
 	/*check for file*/
 	if (filename == NULL)
-		return (n);
+		return (lenght);
 	/*open or create file*/
 	fd = open(filename, O_RDWR | O_CREAT);
 	if (fd < 0)
-		return (n);
+		return (lenght);
 	/*create space in memory for file*/
 	buff = malloc(sizeof(*buff) * letters);
 	if (buff == NULL)
-		return (n);
+		return (lenght);
 	/*read file into buffer*/
-	n = read(fd, buff, letters);
+	lenght = read(fd, buff, letters);
 	/*print file with chars passed*/
-	n = write(STDOUT_FILENO, buff, n);
-	printf("Letters: %ld - N: %ld\n", letters, n);
-	if (n < 0)
-		n = 0;
+	final_length = write(STDOUT_FILENO, buff, lenght);
+	if (final_length != lenght)
+		lenght = 0;
 	/*cierro table entry for file descriptor*/
 	close(fd);
 	free(buff);
-	return (n);
+	return (lenght);
 }
