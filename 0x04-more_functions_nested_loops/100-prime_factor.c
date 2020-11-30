@@ -1,57 +1,31 @@
 #include <stdio.h>
 
-long int next_primo(long int num);
-int check_primo(long int num);
-
-long int next_primo(long int num)
-{
-	long int primo = 0;
-	int i = 1;
-
-	while (primo == 0)
-	{
-		if (check_primo(num + i))
-			primo = num + i;
-		i++;
-	}
-	return (primo);
-}
-
-int check_primo(long int num)
-{
-	int i = 2;
-	while (i <= num / 2)
-	{
-		if (num % i == 0)
-			return (0);
-		else
-			i++;
-	}
-	return (1);
-}
-
 /**
- * main - check the code for Holberton School students.
+ * main - Finds and prints the largest prime
+ *        factor of the number 612852475143.
  *
  * Return: Always 0.
  */
 int main(void)
 {
-	long int primo = 2;
-	long num = 612852475143;
-	int i = 0;
+	long prime = 612852475143, div;
 
-	while (i < 10000)
+	while (div < (prime / 2))
 	{
-		if (num % primo == 0)
-			num = num / primo;
-		else
+		if ((prime % 2) == 0)
 		{
-			if (!(num == 1))
-				primo = next_primo(primo);
+			prime /= 2;
+			continue;
 		}
-		i++;
+
+		for (div = 3; div < (prime / 2); div += 2)
+		{
+			if ((prime % div) == 0)
+				prime /= div;
+		}
 	}
-	printf("%ld\n", primo);
+
+	printf("%ld\n", prime);
+
 	return (0);
 }
