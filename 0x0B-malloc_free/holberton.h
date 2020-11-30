@@ -1,5 +1,5 @@
-#ifndef HOLBERTON
-#define HOLBERTON
+#ifndef __HOLBERTON__
+#define __HOLBERTON__
 #include <stdlib.h>
 int _putchar(char c);
 char *create_array(unsigned int size, char c);
@@ -10,8 +10,7 @@ int getLength(char *s);
 int **alloc_grid(int width, int height);
 void free_grid(int **grid, int height);
 char *argstostr(int ac, char **av);
-int getCharacter(char *s, int n);
-int getStrings(char *s);
 char **strtow(char *str);
-char **populateMemory(char **p, char *str, int st);
-#endif /* HOLBERTON */
+int count_words(char *str);
+int word_len(char *str);
+#endif

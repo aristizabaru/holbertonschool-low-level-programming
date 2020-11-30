@@ -1,137 +1,97 @@
 #include "holberton.h"
 
-
 /**
- * getCharacter - number of char of a word
- * @s: string to evaluate words
- * @n: number of word left to rigth to get chars number
- * Description: Get the number of char of a given n word
+ * word_len - Locates the index marking the end of the
+ *            first word contained within a string.
+ * @str: The string to be searched.
  *
- * Return: number of char of the word
+ * Return: The index marking the end of the initial word pointed to by str.
  */
-int getCharacter(char *s, int n)
+int word_len(char *str)
 {
-	int i = 0, j = 0, c = 1;
+	int index = 0, len = 0;
 
-	while (s[i])
+	while (*(str + index) && *(str + index) != ' ')
 	{
-		if (s[i] >= 33 && s[i] <= 126)
-		{
-			if (c == n)
-				j++;
-			if (s[i + 1] == ' ')
-				c++;
-		}
-		i++;
+		len++;
+		index++;
 	}
-	return (j);
+
+	return (len);
 }
 
 /**
- * getStrings - get number of words in a string
- * @s: string
+ * count_words - Counts the number of words contained within a string.
+ * @str: The string to be searched.
  *
- * Return: number of words
+ * Return: The number of words contained within str.
  */
-int getStrings(char *s)
+int count_words(char *str)
 {
-	int c = 0, i = 0;
+	int index = 0, words = 0, len = 0;
 
-	while (s[i])
+	for (index = 0; *(str + index); index++)
+		len++;
+
+	for (index = 0; index < len; index++)
 	{
-		if (s[i] >= 33 && s[i] <= 126)
+		if (*(str + index) != ' ')
 		{
-			if (s[i - 1] == ' ' || s[i - 1] == '\0')
-				c++;
-		}
-		i++;
-	}
-
-	return (c);
-}
-
-/**
- * populateMemory - populates with content memory
- * @p: pointer to be populated
- * @str: string to get words from
- * @st: length of 2D array
- *
- * Return:pointer to new string
- */
-char **populateMemory(char **p, char *str, int st)
-{
-	int i, j = 0, c, k;
-
-	/*polulate memory*/
-	for (i = 0; i < st; i++)
-	{
-		c = 1, k = 0, j = 0;
-		while (str[j])
-		{
-			if (str[j] >= 33 && str[j] <= 126)
-			{
-				if (c == i + 1)
-				{
-					p[i][k] = str[j];
-					k++;
-				}
-				if (str[j + 1] == ' ')
-				{
-					p[i][k] = '\0';
-					c++;
-				}
-			}
-			j++;
+			words++;
+			index += word_len(str + index);
 		}
 	}
 
-	return (p);
+	return (words);
 }
 
 /**
- * strtow - get words from a string
- * @str: string
+ * strtow - Splits a string into words.
+ * @str: The string to be split.
  *
- * Return: pointer to words
+ * Return: If str = NULL, str = "", or the function fails - NULL.
+ *         Otherwise - a pointer to an array of strings (words).
  */
 char **strtow(char *str)
 {
-	char **p = NULL;
-	int st = 0, i, j = 0;
+	char **strings;
+	int index = 0, words, w, letters, l;
 
-	/*check if string is full*/
-	if (str == NULL || str == '\0')
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
 
-	st = getStrings(str);
-
-	if (st == 0)
+	words = count_words(str);
+	if (words == 0)
 		return (NULL);
 
-	/*Allocate memory for pointers to rows of 2D array*/
-	p = malloc(sizeof(p) * st + 1);
-
-	if (p == NULL)
+	strings = malloc(sizeof(char *) * (words + 1));
+	if (strings == NULL)
 		return (NULL);
 
-	p[st] = NULL;
-
-	/*Allocate memory to strings*/
-	for (i = 0; i < st; i++)
+	for (w = 0; w < words; w++)
 	{
-		/*the las +1 is for the null char*/
-		p[i] = malloc(sizeof(p[i]) * getCharacter(str, i + 1) + 1);
+		while (str[index] == ' ')
+			index++;
 
-		/*liberates memory if fails // rows and colums*/
-		if (p[i] == NULL)
+		letters = word_len(str + index);
+
+		strings[w] = malloc(sizeof(char) * (letters + 1));
+
+		if (strings[w] == NULL)
 		{
-			for (j = 0; j < i; j++)
-				free(p[j]);
-			free(p);
+			for (; w >= 0; w--)
+				free(strings[w]);
+
+			free(strings);
 			return (NULL);
 		}
-	}
 
-	p = populateMemory(p, str, st);
-	return (p);
+		for (l = 0; l < letters; l++)
+			strings[w][l] = str[index++];
+
+		strings[w][l] = '\0';
+	}
+	strings[w] = NULL;
+
+	return (strings);
 }
