@@ -2,61 +2,31 @@
 #include "holberton.h"
 
 /**
- * main - check the code for Holberton School students.
+ * main - Prints the numbers from 1-100, but for multiples of three,
+ *        Fizz is printed instead of the number, for multiples of five,
+ *        Buzz, and for multiples of both three and five, FizzBuzz.
  *
  * Return: Always 0.
  */
 int main(void)
 {
-	int i;
+	int num = 1;
 
-	for (i = 1; i <= 100; i++)
+	for (; num < 101; num++)
 	{
-		if (es_multiplo(i, 3) == 0 && es_multiplo(i, 5) == 0)
-			print_fizz(1);
-		else if (es_multiplo(i, 3) == 0)
-			print_fizz(3);
-		else if (es_multiplo(i, 5) == 0)
-			print_fizz(5);
+		if (num % 3 == 0 && num % 5 == 0)
+			printf("FizzBuzz");
+		else if (num % 3 == 0)
+			printf("Fizz");
+		else if (num % 5 == 0)
+			printf("Buzz");
 		else
-			printf("%d", i);
-		if (i != 100)
-			printf(" ");
+			printf("%d", num);
+		if (num == 100)
+			continue;
+		printf(" ");
 	}
 	printf("\n");
+
 	return (0);
-}
-
-/**
- * es_multiplo - find if a number is multiples of another
- * @n1: number evaluated
- * @n2: multiplicador
- *
- * Return: 0 if its true
- * 1 if its false
- */
-int es_multiplo(int n1, int n2)
-{
-	int esMultiplo = 1;
-	
-	if (n1 % n2 == 0)
-		esMultiplo = 0;
-
-	return (esMultiplo);
-}
-
-/**
- * print_fizz - print string
- * @n: number of string to be printed
- *
- * Return: void
- */
-void print_fizz(int n)
-{
-	if (n == 3)
-		printf("Fizz");
-	else if (n == 5)
-		printf("Buzz");
-	else
-		printf("FizzBuzz");
 }
