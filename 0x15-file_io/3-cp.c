@@ -107,7 +107,11 @@ int main(int argc, char **argv)
 	while (characters > 0)
 	{
 		characters = read(fd_read, buffer, BUFFER_SIZE - 1);
-		write(fd_write, buffer, characters);
+		if (write(fd_write, buffer, characters) == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			characters = 0;
+		}
 		free(buffer);
 		initialize_buffer(&buffer);
 	}
