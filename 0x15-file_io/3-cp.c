@@ -69,7 +69,7 @@ int _strlen(char *string)
 {
 	int i = 0;
 
-	if (string = NULL)
+	if (string == NULL)
 		return (-1);
 
 	for (; i < string[i]; i++)
