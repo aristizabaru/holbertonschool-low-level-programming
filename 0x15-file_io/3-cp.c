@@ -111,10 +111,13 @@ int main(int argc, char **argv)
 			free(buffer);
 			print_error(READ_ERROR, argv[1], 0);
 		}
-		if (write(fd_write, buffer, characters) == -1)
+		if (characters == 1024)
 		{
-			free(buffer);
-			print_error(WRITE_ERROR, argv[2], 0);
+			if (write(fd_write, buffer, characters) == -1)
+			{
+				free(buffer);
+				print_error(WRITE_ERROR, argv[2], 0);
+			}
 		}
 		free(buffer);
 		initialize_buffer(&buffer);
