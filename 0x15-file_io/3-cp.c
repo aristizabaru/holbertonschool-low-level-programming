@@ -10,6 +10,12 @@
 #define FD_ERROR 100
 #define BUFFER_SIZE 1024
 
+/**
+ * print_error - prints erros
+ * @code: code of error to be printed
+ * @argument: argmument to be printed if needed
+ * @fd: file descriptor to be printed if needed
+ */
 void print_error(int code, char *argument, int fd)
 {
 	switch (code)
@@ -27,12 +33,18 @@ void print_error(int code, char *argument, int fd)
 		exit(WRITE_ERROR);
 		break;
 	case FD_ERROR:
-		dprintf(STDERR_FILENO, "Error: Can't write to %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(FD_ERROR);
 		break;
 	}
 }
 
+/**
+ * initialize_buffer - create a buffer of BUFFER_SIZE bytes
+ * @buffer: string to allocated
+ * Description: Allocate memory for a buffer of size BUFFER_SIZE
+ * 		and filled with \0
+ */
 void initialize_buffer(char **buffer)
 {
 	int i = 0;
@@ -47,15 +59,31 @@ void initialize_buffer(char **buffer)
 		(*buffer)[i] = '\0';
 }
 
+/**
+ * _strlen - gets the number of characters of a string
+ * @string: string to be counted by chars
+ *
+ * Return: number of characters on succes, -1 on failure;
+ */
 int _strlen(char *string)
 {
 	int i = 0;
+
+	if (string = NULL)
+		return (-1);
 
 	for (; i < string[i]; i++)
 		;
 	return (i);
 }
 
+/**
+ * main - write information from a file to another
+ * @argc: arguments count
+ * @argv: arguments values
+ *
+ * Return: 0 on succes, -1 on failure
+ */
 int main(int argc, char **argv)
 {
 	int fd_read = 0;
