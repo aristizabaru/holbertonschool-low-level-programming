@@ -100,8 +100,8 @@ int main(int argc, char **argv)
 
 	fd_write = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_read == -1)
-
-		initialize_buffer(&buffer);
+		print_error(WRITE_ERROR, argv[2], 0);
+	initialize_buffer(&buffer);
 
 	while (characters > 0)
 	{
