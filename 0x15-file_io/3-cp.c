@@ -43,7 +43,7 @@ void print_error(int code, char *argument, int fd)
  * initialize_buffer - create a buffer of BUFFER_SIZE bytes
  * @buffer: string to allocated
  * Description: Allocate memory for a buffer of size BUFFER_SIZE
- * 		and filled with \0
+ * and filled with \0
  */
 void initialize_buffer(char **buffer)
 {
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 	if (fd_read == -1)
 		print_error(READ_ERROR, argv[1], 0);
 
-	fd_write = open(argv[2], O_RDWR | O_CREAT | O_TRUNC, 0664);
+	fd_write = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_read == -1)
 		print_error(WRITE_ERROR, argv[2], 0);
 
