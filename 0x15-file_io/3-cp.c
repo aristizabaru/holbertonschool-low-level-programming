@@ -105,7 +105,12 @@ int main(int argc, char **argv)
 
 	while (characters > 0)
 	{
-		characters = read(fd_read, buffer, BUFFER_SIZE - 1);
+		characters = read(fd_read, buffer, BUFFER_SIZE);
+		if (characters == -1)
+		{
+			free(buffer);
+			print_error(READ_ERROR, argv[1], 0);
+		}
 		if (write(fd_write, buffer, characters) == -1)
 		{
 			free(buffer);
