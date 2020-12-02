@@ -93,16 +93,13 @@ int main(int argc, char **argv)
 
 	if (argc != 3)
 		print_error(USAGE_ERROR, NULL, 0);
-
 	fd_read = open(argv[1], O_RDONLY);
 	if (fd_read == -1)
 		print_error(READ_ERROR, argv[1], 0);
-
 	fd_write = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_read == -1)
 		print_error(WRITE_ERROR, argv[2], 0);
 	initialize_buffer(&buffer);
-
 	while (characters > 0)
 	{
 		characters = read(fd_read, buffer, BUFFER_SIZE);
@@ -111,6 +108,8 @@ int main(int argc, char **argv)
 			free(buffer);
 			print_error(READ_ERROR, argv[1], 0);
 		}
+		else if (characters == 0)
+			break;
 		if (write(fd_write, buffer, characters) == -1)
 		{
 			free(buffer);
@@ -119,7 +118,6 @@ int main(int argc, char **argv)
 		free(buffer);
 		initialize_buffer(&buffer);
 	}
-
 	free(buffer);
 	if (close(fd_read) == -1)
 		print_error(FD_ERROR, NULL, fd_read);
