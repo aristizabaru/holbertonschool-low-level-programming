@@ -9,6 +9,7 @@
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	dlistint_t *temp = NULL;
+	int exit_status = DELETE_FAILURE;
 
 	if (*head)
 	{
@@ -16,35 +17,35 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		{
 			free(*head);
 			*head = NULL;
-			return (DELETE_SUCCES);
+			exit_status = DELETE_SUCCES;
 		}
 		else if ((*head)->next && index == 0)
 		{
 			*head = (*head)->next;
 			free((*head)->prev);
 			(*head)->prev = NULL;
-			return (DELETE_SUCCES);
+			exit_status = DELETE_SUCCES;
 		}
 		else
 		{
 			temp = *head;
 			while (--index != 0 && temp->next)
 				temp = temp->next;
-			if (index == 0 && temp->next)
+			if (index == 0 && temp->next != NULL && temp->next->next)
 			{
 				temp->next = temp->next->next;
 				free(temp->next->prev);
 				temp->next->prev = temp;
-				return (DELETE_SUCCES);
+				exit_status = DELETE_SUCCES;
 			}
-			else if (index == 0 && temp->next == NULL)
+			else if (index == 0 && temp->next != NULL && temp->next->next == NULL)
 			{
 				free(temp->next);
 				temp->next = NULL;
-				return (DELETE_SUCCES);
+				exit_status = DELETE_SUCCES;
 			}
 		}
 	}
 
-	return (DELETE_FAILURE);
+	return (exit_status);
 }
