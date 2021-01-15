@@ -9,11 +9,11 @@
  */
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
-        unsigned long int key_index = 0;
-        unsigned long int hash = 0;
+	unsigned long int key_index = 0;
+	unsigned long int hash = 0;
 
-        hash = hash_djb2(key);
-        key_index = hash % size;
+	hash = hash_djb2(key);
+	key_index = hash % size;
 
-        return (key_index);
+	return (key_index);
 }
