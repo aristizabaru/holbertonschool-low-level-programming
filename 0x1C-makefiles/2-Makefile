@@ -1,0 +1,11 @@
+CC = gcc
+SRC := $(wildcard *.c)
+OBJ = $(patsubst %.c,%.o,$(wildcard *.c))
+NAME = holberton
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+.PHONY : clean
+clean :
+	rm *.o holberton
