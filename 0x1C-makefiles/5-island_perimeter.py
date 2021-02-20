@@ -8,25 +8,27 @@ def island_perimeter(grid):
 
     Arguments:
         Grid (list): the matrix to analize
+
+    Return:
+        The perimeter of the island defined in grid
     """
-    perimeter = 0
-    max_row = 0
-    max_col = 0
+    parameter = 0
 
     if grid:
-        if len(grid) < 2 and len(grid[0]) < 2:
-            if grid[0][0] == 1:
-                perimeter = 4
-        else:
-            for row_idx, row in enumerate(grid):
-                suma_row = sum(row)
-                if suma_row > max_row:
-                    max_row = suma_row
-                suma_col = 0
-                for col in range(0, len(grid)):
-                    suma_col += grid[col][row_idx]
-                if suma_col > max_col:
-                    max_col = suma_col
-            perimeter = (max_row*2) + (max_col*2)
 
-    return perimeter
+        width = len(grid[0])
+        height = len(grid)
+        edges = 0
+        size = 0
+
+        for i in range(height):
+            for j in range(width):
+                if grid[i][j] == 1:
+                    size += 1
+                    if (j > 0 and grid[i][j - 1] == 1):
+                        edges += 1
+                    if (i > 0 and grid[i - 1][j] == 1):
+                        edges += 1
+        parameter = size * 4 - edges * 2
+
+    return parameter
