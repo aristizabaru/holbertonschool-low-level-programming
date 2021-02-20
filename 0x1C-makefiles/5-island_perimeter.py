@@ -15,7 +15,8 @@ def island_perimeter(grid):
 
     if grid:
         if len(grid) < 2 and len(grid[0]) < 2:
-            perimeter = grid[0][0]
+            if grid[0][0] == 1:
+                perimeter = 4
         else:
             for row_idx, row in enumerate(grid):
                 suma_row = sum(row)
