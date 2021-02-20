@@ -14,15 +14,18 @@ def island_perimeter(grid):
     max_col = 0
 
     if grid:
-        for row_idx, row in enumerate(grid):
-            suma_row = sum(row)
-            if suma_row > max_row:
-                max_row = suma_row
-            suma_col = 0
-            for col in range(0, len(grid)):
-                suma_col += grid[col][row_idx]
-            if suma_col > max_col:
-                max_col = suma_col
-        perimeter = (max_row*2) + (max_col*2)
+        if len(grid) < 2 and len(grid[0]) < 2:
+            perimeter = grid[0][0]
+        else:
+            for row_idx, row in enumerate(grid):
+                suma_row = sum(row)
+                if suma_row > max_row:
+                    max_row = suma_row
+                suma_col = 0
+                for col in range(0, len(grid)):
+                    suma_col += grid[col][row_idx]
+                if suma_col > max_col:
+                    max_col = suma_col
+            perimeter = (max_row*2) + (max_col*2)
 
     return perimeter
