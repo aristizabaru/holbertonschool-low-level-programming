@@ -1,8 +1,8 @@
 #include "search_algos.h"
 
 /**
- * linear_search - find value using in array
- * @array: random values
+ * linear_search - find value in a array
+ * @array: unsorted values
  * @size: size of the array
  * @value: value to be found
  *
