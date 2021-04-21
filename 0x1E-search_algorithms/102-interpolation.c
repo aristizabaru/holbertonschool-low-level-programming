@@ -23,16 +23,22 @@ int interpolation_search(int *array, size_t size, int value)
 	{
 		mid =  low + (((double)(high - low) / (array[high] - array[low]))
 				* (value - array[low]));
-		printf("Value checked array[%d] = [%d]\n", mid, array[mid]);
+	
 		if (array[mid] < value)
 			low = mid + 1;
 		else if (value < array[mid])
 			high = mid - 1;
 		else
-			return (mid);
+		{
+			for(; array[mid] == value; mid-- )
+			;
+			{
+				printf("Value checked array[%d] = [%d]\n", mid, array[mid]);
+			}
+			return (mid + 1);
+		}
 	}
 	if (value == array[low])
-	
 		return (low);
 	else
 		return (-1);
