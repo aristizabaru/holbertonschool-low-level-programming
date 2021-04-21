@@ -29,7 +29,7 @@ int interpolation_search(int *array, size_t size, int value)
 		else if (value < array[mid])
 			high = mid - 1;
 		else
-		return (mid);
+			return (mid);
 	}
 	if (value == array[low])
 		return (low);
