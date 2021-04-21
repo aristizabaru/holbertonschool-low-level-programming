@@ -17,7 +17,7 @@ int jump_search(int *array, size_t size, int value)
 
 	if (!array || !value)
 		return (-1);
-	while (array[right] < value && right < size)
+	while (array[right] <= value && right < size)
 	{
 		printf("Value checked array[%d] = [%d]\n", right, array[right]);
 		/* move one jump if it is not the correct block */
