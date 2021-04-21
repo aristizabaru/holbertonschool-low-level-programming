@@ -45,7 +45,7 @@ int binarySearchRecursive(int *array, int left, int right, int value)
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (!array)
+	if (!array || !size)
 		return (-1);
 
 	return (binarySearchRecursive(array, 0, size - 1, value));
