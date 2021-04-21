@@ -14,7 +14,7 @@ int binarySearchRecursive(int *array, int left, int right, int value)
 	int i = NULL;
 	int mid = NULL;
 	/* base case */
-	if (left < right)
+	if (left <= right)
 	{
 		mid = left + (right - left) / 2;
 		printf("Searching in array: ");
