@@ -27,12 +27,12 @@ int binarySearchRecursive(int *array, int left, int right, int value)
 		if (array[mid] == value && (mid == left || array[mid - 1] != value))
 			return (mid);
 		else if (array[mid] >= value)
-			return binarySearchRecursive(array, left, mid, value);
+			return (binarySearchRecursive(array, left, mid, value));
 
-		return binarySearchRecursive(array, mid + 1, right, value);
+		return (binarySearchRecursive(array, mid + 1, right, value));
 	}
 
-	return -1;
+	return (-1);
 }
 
 /**
