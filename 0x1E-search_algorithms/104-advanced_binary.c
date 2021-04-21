@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * advanced_binary - find value in a array
+ * binarySearchRecursive - find value in a array
  * @array: sorted values
  * @left: left bound of the array
  * @right: right bound of the array
