@@ -33,14 +33,15 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	for (i = (int)left->index; i <= (int)right->index; i++)
 	{
 		printf("Value checked at index [%d] = [%d]\n", i, left->n);
-		if (left->next)
-			left = left->next;
+
 		/* linear search when correct block found */
 		if (left->n == value)
 		{
-			printf("Value checked at index [%d] = [%d]\n", i + 1, left->n);
+			printf("Value checked at index [%d] = [%d]\n", i, left->n);
 			return (left);
 		}
+		if (left->next)
+			left = left->next;
 	}
 	return (NULL);
 }
